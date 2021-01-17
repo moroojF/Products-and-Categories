@@ -61,7 +61,7 @@ public class Category {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
+	
 	public List<Product> getProducts() {
 		return products;
 	}
@@ -69,7 +69,7 @@ public class Category {
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
-	
+
 	@PrePersist
 	protected void onCreate(){
 		this.createdAt = new Date();

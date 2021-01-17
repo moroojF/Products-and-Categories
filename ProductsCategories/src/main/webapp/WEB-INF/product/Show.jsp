@@ -24,19 +24,17 @@
 		</c:forEach>
 		</ul>
 		<h3>Add Category</h3>
-		<form:form action="/products/${product.id}/addCat" method="POST" modelAttribute="category">
-			<form:input type="hidden" path="product" value="${ product.id }"/>
+		<form action="/products/${product.id}/addCat" method="POST" modelAttribute="category">
 			<div class="form-group">
-		        <form:label path="category">Categories</form:label>
-		        <form:errors path="category"/>
-		        <form:select class="form-control" path="category">
+		        <label path="name">Categories</label>
+		        <select class="form-control" name="category">
 		        <c:forEach items="${ notInCategories }" var="nonCat">
 		        	<option value=${ nonCat.id }>${ nonCat.name }</option>
 		        </c:forEach>
-		        </form:select>
+		        </select>
 		    </div>
 		    <button class="btn-dark">Add Category</button>
-		</form:form>
+		</form>
 	</div>
 </body>
 </html>

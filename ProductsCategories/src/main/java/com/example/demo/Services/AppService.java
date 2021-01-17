@@ -39,10 +39,10 @@ public class AppService {
 	public List<Product> findProductsNotInCategory(Category category) {
 		return productRepo.findByCategoriesNotContains(category);
 	}
-	public Category addCategory(Category category) {
-		return categoryRepo.save(category);
-	}
-	public Product addProduct(Product product) {
+	public Product updateProduct(Product product) {
 		return productRepo.save(product);
+	}
+	public Category updateCategory(Category category) {
+		return categoryRepo.save(category);
 	}
 }

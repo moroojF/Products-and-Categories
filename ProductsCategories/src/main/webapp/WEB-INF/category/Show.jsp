@@ -13,10 +13,9 @@
 <body>
 <div class="container">
 		<nav>
-			<h3><a href="/Products">Products</a> | <a href="/categories">Categories</a></h3>
+			<h3><a href="/products/new">Products</a> | <a href="/categories/new">Categories</a></h3>
 		</nav>
 		<h2>${ category.name }</h2>
-		<p>${ category.description }</p>
 		<h3>Products</h3>
 		<ul>
 		<c:forEach items="${ category.products }" var="pro">
@@ -24,19 +23,17 @@
 		</c:forEach>
 		</ul>
 		<h3>Add Product</h3>
-		<form:form action="/associations/category" method="POST" modelAttribute="association">
-			<form:input type="hidden" path="product" value="${ product.id }"/>
+		<form action="/categories/${category.id}/addPro" method="POST" modelAttribute="product">
 			<div class="form-group">
-		        <form:label path="category">Song Title</form:label>
-		        <form:errors path="category"/>
-		        <form:select class="form-control" path="category">
-		        <c:forEach items="${ notInCategories }" var="nonCat">
-		        	<option value=${ nonCat.id }>${ nonCat.name }</option>
+		        <label path="name">Categories</label>
+		        <select class="form-control" name="product">
+		        <c:forEach items="${ notInProducts }" var="nonPro">
+		        	<option value=${ nonPro.id }>${ nonPro.name }</option>
 		        </c:forEach>
-		        </form:select>
+		        </select>
 		    </div>
-		    <button class="btn-dark">Add Category</button>
-		</form:form>
+		    <button class="btn-dark">Add Product</button>
+		</form>
 	</div>
 </body>
 </html>

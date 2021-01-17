@@ -23,12 +23,12 @@ public class ProductController {
 		return "/product/Show.jsp";
 	}
 	@RequestMapping(value="/products/{id}/addCat", method=RequestMethod.POST)
-	public String addCat(@PathVariable("id") Long id, @Valid @ModelAttribute("category") Category category, BindingResult result) {
-		if(result.hasErrors())
-			return "/product/Show.jsp";
+	public String addCat(@PathVariable("id") Long id,@RequestParam("category") Long category) {
 		Product p = this.appService.findProduct(id);
-		p.AddCategory(category);
-		return "redirect:/product/"+p.getId();
+		Category c= this.appService.findCategory(category);
+		p.AddCategory(c);
+		appService.updateProduct(p);
+		return "redirect:/products/"+p.getId();
 	}
 	@RequestMapping("/products/new")
 	public String NewProduct(@ModelAttribute("product") Product product) {
